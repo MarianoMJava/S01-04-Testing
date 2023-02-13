@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class S0104N1Ejercicio2Test {
 
 	@Test
-	void test() {
+	void testLetrasCorrectas() {
 		
 		HashMap<Integer, Character> tablaLetrasTest = new HashMap<Integer, Character>();
 		
@@ -48,7 +48,7 @@ class S0104N1Ejercicio2Test {
 			
 			resto=i%23;
 			
-			System.out.println(i);
+			//System.out.println(i);
 			
 			assertEquals(tablaLetrasTest.get(i) , CalculoDni.calculaLetraDni(resto));
 			
