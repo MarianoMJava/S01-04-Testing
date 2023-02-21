@@ -8,7 +8,7 @@ public class S0104N1Ejercicio2 {
 		
 	Scanner sc = new Scanner(System.in);
 		
-	int dni, resto;
+	int dni;
 	
 	char letraDni;
 	
@@ -16,9 +16,9 @@ public class S0104N1Ejercicio2 {
 	
 	dni = sc.nextInt();
 	
-	resto = dni%23;
 	
-	letraDni = CalculoDni.calculaLetraDni(resto);
+	
+	letraDni = CalculoDni.calculaLetraDni(dni);
 	
 	System.out.println("La letra de DNI correspondiente es la: "+ letraDni);
 	System.out.println("Por lo que el DNI correcto seria: "+dni+"-"+letraDni);

@@ -2,58 +2,37 @@ package s0104n1ejercicio2;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
+import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class S0104N1Ejercicio2Test {
 
-	@Test
-	void testLetrasCorrectas() {
-		
-		HashMap<Integer, Character> tablaLetrasTest = new HashMap<Integer, Character>();
-		
-		FileReader archivoTest;
-		BufferedReader lectorTest;
-		
-		try {
-			
-		archivoTest = new FileReader("C:\\Users\\of_tecnica1\\Desktop\\DnisPTest.txt");
-		lectorTest = new BufferedReader(archivoTest);
-		String linea;
-		
-		while ((linea = lectorTest.readLine())!=null) {
-			
-			String[] lineaPartTest = linea.split(" ");
-			
-			int nroDniTest = Integer.parseInt(lineaPartTest[0]);
-			char letraDniTest = lineaPartTest[1].charAt(0);
-			
-			tablaLetrasTest.put(nroDniTest, letraDniTest);
-			
-		}	
-		
-		}catch (IOException e) {
-			
-			System.out.println("La carga del archivo de test no se cargo correctamente!");
-			
-		}
-		
-		for(int i : tablaLetrasTest.keySet()) {
-			
-			int resto;
-			
-			resto=i%23;
-			
-			//System.out.println(i);
-			
-			assertEquals(tablaLetrasTest.get(i) , CalculoDni.calculaLetraDni(resto));
-			
-		}
-		
+	@ParameterizedTest
+	@MethodSource("dnisCorrectosTest")
+	
+	void letraDni(char letra, int numero) {
+
+		assertEquals(letra, CalculoDni.calculaLetraDni(numero));
+
 	}
 
+	private static Stream<Arguments> dnisCorrectosTest() {
+		return Stream.of(
+				Arguments.of('Z', 12345678), 
+				Arguments.of('N', 23561258), 
+				Arguments.of('B', 85692123),
+				Arguments.of('R', 52859636),
+				Arguments.of('B', 94362571), 
+				Arguments.of('Y', 2158763), 
+				Arguments.of('B', 30215479), 
+				Arguments.of('C', 86172395),
+				Arguments.of('Y', 20003658), 
+				Arguments.of('X', 20001569)
+				);
+
+	}
 }

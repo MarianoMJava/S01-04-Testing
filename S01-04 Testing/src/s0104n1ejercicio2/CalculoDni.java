@@ -7,7 +7,9 @@ import java.util.HashMap;
 
 public class CalculoDni {
 
-	public static char calculaLetraDni(int resto) {
+	public static char calculaLetraDni(int dni) {
+		
+		int resto = dni%23;
 		
 		char letra;
 		
@@ -18,7 +20,7 @@ public class CalculoDni {
 		
 		try {
 			
-			archivo = new FileReader("C:\\Users\\of_tecnica1\\Desktop\\LetrasDNI.txt");
+			archivo = new FileReader("C:\\Users\\Mariano\\eclipse-workspace\\S01-04 Testing\\bin\\s0104n1ejercicio2\\LetrasDNI.txt");
 			lector = new BufferedReader(archivo);
 			String linea ; 
 			
